@@ -50,14 +50,14 @@ export default {
       this.$store.commit('setIsLoading', true);
 
       await axios
-          .get('/api/v1/get-form/')
+          .get('//20.215.192.84:8000/api/v1/get-form/')
           .then(response => {
             this.object = response.data  // Store data in the objects array
           })
           .catch(error => {
             console.error('Error fetching data:', error);
           })
-
+          
 
       this.$store.commit('setIsLoading', false); 
     },
@@ -66,7 +66,7 @@ export default {
       formData.append('image', this.formData.image); // Append the image file
 
       try {
-        const response = await axios.post('/api/v1/predict/', formData, {
+        const response = await axios.post('//20.215.192.84:8000/api/v1/predict/', formData, {
           headers: {
             'Content-Type': 'multipart/form-data', // Set multipart header
           },
